@@ -74,6 +74,27 @@ resource "digitalocean_droplet" "kibana" {
     EOF
 }
 
+# Firewall rule to allow traffic to Kibana
+resource "digitalocean_firewall" "kibana_firewall" {
+  name = "kibana-firewall"
+
+  droplet_ids = digitalocean_droplet.kibana.*.id
+
+  inbound_rule {
+    protocol         = "tcp"
+    port_range       = "5601"
+    source_addresses = ["0.0.0.0/0"]
+  }
+
+  outbound_rule {
+    protocol    = "tcp"
+    port_range  = "all"
+    destination_addresses = ["0.0.0.0/0"]
+  }
+
+  vpc_uuid = digitalocean_vpc.kibana_vpc.id
+}
+
 resource "digitalocean_loadbalancer" "kibana_lb" {
   name   = "kibana-lb"
   region = var.region
