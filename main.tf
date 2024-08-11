@@ -43,6 +43,7 @@ resource "digitalocean_droplet" "kibana" {
 resource "digitalocean_loadbalancer" "kibana_lb" {
   name   = "kibana-lb"
   region = var.region
+
   forwarding_rule {
     entry_protocol  = "http"
     entry_port      = 80
@@ -53,6 +54,7 @@ resource "digitalocean_loadbalancer" "kibana_lb" {
   healthcheck {
     protocol               = "http"
     port                   = 5601
+    path                   = "/"
     check_interval_seconds = 10
     response_timeout_seconds = 5
     healthy_threshold      = 5
@@ -61,6 +63,7 @@ resource "digitalocean_loadbalancer" "kibana_lb" {
 
   droplet_ids = digitalocean_droplet.kibana.*.id
 }
+
 
 output "kibana_url" {
   value = digitalocean_loadbalancer.kibana_lb.ip
