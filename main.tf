@@ -114,6 +114,8 @@ resource "digitalocean_loadbalancer" "kibana_lb" {
     healthy_threshold = 5
     unhealthy_threshold = 3
   }
+
+  vpc_uuid = digitalocean_vpc.kibana_vpc.id
 }
 
 output "kibana_url" {
