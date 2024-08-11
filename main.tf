@@ -36,7 +36,7 @@ resource "digitalocean_droplet" "kibana" {
   image = "ubuntu-22-04-x64"
   name  = "kibana-${count.index}"
   region = var.region
-  size   = var.droplet_size
+  size   = "s-4vcpu-8gb"  # Corrected size slug to ensure 8GB RAM
   ssh_keys = [var.ssh_key_id]
 
   vpc_uuid = digitalocean_vpc.kibana_vpc.id
@@ -71,7 +71,7 @@ resource "digitalocean_droplet" "kibana" {
 
     systemctl enable kibana
     systemctl start kibana
-    EOF
+  EOF
 }
 
 # Firewall rule to allow traffic to Kibana
