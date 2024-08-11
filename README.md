@@ -1,4 +1,5 @@
 To update the README.md file while keeping sensitive information hidden, here's how you can revise it:
+READ THE RESEARCH PRESENTATION > https://www.canva.com/design/DAGNi57qZ28/WzefclFUaQ74dezb0_f6BQ/edit?utm_content=DAGNi57qZ28&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
 
 ```markdown
 # PoC: Kibana and ElasticSearch Installation on DigitalOcean
