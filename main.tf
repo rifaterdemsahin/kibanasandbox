@@ -36,7 +36,7 @@ resource "digitalocean_droplet" "kibana" {
   image = "ubuntu-22-04-x64"
   name  = "kibana-${count.index}"
   region = var.region
-  size   = "s-4vcpu-8gb"  # Corrected size slug to ensure 8GB RAM
+  size   = "s-4vcpu-8gb"
   ssh_keys = [var.ssh_key_id]
 
   vpc_uuid = digitalocean_vpc.kibana_vpc.id
@@ -74,12 +74,19 @@ resource "digitalocean_droplet" "kibana" {
   EOF
 }
 
-# Firewall rule to allow traffic to Kibana
 resource "digitalocean_firewall" "kibana_firewall" {
   name = "kibana-firewall"
 
   droplet_ids = digitalocean_droplet.kibana.*.id
 
+  # Allow SSH access from your public IP
+  inbound_rule {
+    protocol         = "tcp"
+    port_range       = "22"
+    source_addresses = [var.public_ip]
+  }
+
+  # Allow Kibana traffic
   inbound_rule {
     protocol         = "tcp"
     port_range       = "5601"

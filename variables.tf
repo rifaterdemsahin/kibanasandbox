@@ -1,3 +1,8 @@
+variable "public_ip" {
+  description = "The public IP address from which SSH access is allowed"
+  type        = string
+}
+
 variable "do_token" {
   description = "DigitalOcean API token"
   type        = string
