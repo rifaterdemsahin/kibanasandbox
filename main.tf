@@ -54,6 +54,7 @@ resource "digitalocean_droplet" "kibana" {
 
     # Configure Elasticsearch
     echo "network.host: 0.0.0.0" >> /etc/elasticsearch/elasticsearch.yml
+    echo "cluster.initial_master_nodes: [\"kibana-0\"]" >> /etc/elasticsearch/elasticsearch.yml
     systemctl enable elasticsearch
     systemctl start elasticsearch
 
@@ -63,9 +64,9 @@ resource "digitalocean_droplet" "kibana" {
     # Set Kibana encryption keys and Elasticsearch connection
     cat <<EOL >> /etc/kibana/kibana.yml
     server.host: "0.0.0.0"
-    xpack.security.encryptionKey: "$(openssl rand -base64 32)"
-    xpack.reporting.encryptionKey: "$(openssl rand -base64 32)"
-    xpack.encryptedSavedObjects.encryptionKey: "$(openssl rand -base64 32)"
+    xpack.security.encryptionKey: "${random_string.security_encryption_key.result}"
+    xpack.reporting.encryptionKey: "${random_string.reporting_encryption_key.result}"
+    xpack.encryptedSavedObjects.encryptionKey: "${random_string.saved_objects_encryption_key.result}"
     elasticsearch.hosts: ["http://localhost:9200"]
     EOL
 
