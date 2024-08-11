@@ -91,8 +91,6 @@ resource "digitalocean_firewall" "kibana_firewall" {
     port_range  = "all"
     destination_addresses = ["0.0.0.0/0"]
   }
-
-  vpc_uuid = digitalocean_vpc.kibana_vpc.id
 }
 
 resource "digitalocean_loadbalancer" "kibana_lb" {
@@ -116,8 +114,6 @@ resource "digitalocean_loadbalancer" "kibana_lb" {
     healthy_threshold = 5
     unhealthy_threshold = 3
   }
-
-  vpc_uuid = digitalocean_vpc.kibana_vpc.id
 }
 
 output "kibana_url" {
