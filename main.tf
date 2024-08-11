@@ -2,6 +2,7 @@ provider "digitalocean" {
   token = var.do_token
 }
 
+
 resource "digitalocean_vpc" "kibana_vpc" {
   name   = "kibana-vpc"
   region = var.region
