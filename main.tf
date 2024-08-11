@@ -45,17 +45,28 @@ resource "digitalocean_droplet" "kibana" {
     #!/bin/bash
     apt-get update
     apt-get install -y apt-transport-https
+
+    # Install Elasticsearch
     wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | apt-key add -
     sh -c 'echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" > /etc/apt/sources.list.d/elastic-7.x.list'
     apt-get update
+    apt-get install -y elasticsearch
+
+    # Configure Elasticsearch
+    echo "network.host: 0.0.0.0" >> /etc/elasticsearch/elasticsearch.yml
+    systemctl enable elasticsearch
+    systemctl start elasticsearch
+
+    # Install Kibana
     apt-get install -y kibana
 
     # Set Kibana encryption keys and Elasticsearch connection
     cat <<EOL >> /etc/kibana/kibana.yml
+    server.host: "0.0.0.0"
     xpack.security.encryptionKey: "$(openssl rand -base64 32)"
     xpack.reporting.encryptionKey: "$(openssl rand -base64 32)"
     xpack.encryptedSavedObjects.encryptionKey: "$(openssl rand -base64 32)"
-    elasticsearch.hosts: ["http://<elasticsearch_host>:9200"]
+    elasticsearch.hosts: ["http://localhost:9200"]
     EOL
 
     systemctl enable kibana
