@@ -18,7 +18,7 @@ variable "droplet_size" {
 variable "node_count" {
   description = "The number of Kibana nodes"
   type        = number
-  default     = 2
+  default     = 1
 }
 
 variable "ssh_key_id" {
