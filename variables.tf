@@ -6,7 +6,7 @@ variable "do_token" {
 variable "region" {
   description = "The region to deploy the resources in"
   type        = string
-  default     = "nyc3"
+  default     = "lon1"
 }
 
 variable "droplet_size" {
