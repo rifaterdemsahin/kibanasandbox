@@ -1,0 +1,43 @@
+# DigitalOcean Billing Overview
+
+This repository contains information related to the costs incurred on DigitalOcean for the month of August 2024. The data includes detailed billing information for various resources such as Droplets.
+
+## Invoice Summary
+
+- **Estimated Due:** $0.85 (as of August 12, 2024)
+- **Past Due:** $1.56
+- **Total Usage:** $0.85
+
+## Billing Details
+
+The following table summarizes the billing details for the usage of DigitalOcean services:
+
+| **Product** | **Description**               | **Start Time**              | **End Time**                | **Cost (USD)** |
+|-------------|--------------------------------|-----------------------------|-----------------------------|----------------|
+| Droplets    | kibana-0 (s-1vcpu-2gb)         | 2024-08-11 13:14:00 +0000   | 2024-08-11 13:40:24 +0000   | $0.02          |
+| Droplets    | kibana-1 (s-1vcpu-2gb)         | 2024-08-11 13:14:00 +0000   | 2024-08-11 13:40:24 +0000   | $0.02          |
+| Droplets    | kibana-0 (s-1vcpu-2gb)         | 2024-08-11 13:43:46 +0000   | 2024-08-11 13:46:31 +0000   | $0.02          |
+| Droplets    | kibana-1 (s-1vcpu-2gb)         | 2024-08-11 13:43:45 +0000   | 2024-08-11 13:46:32 +0000   | $0.02          |
+| Droplets    | kibana-1 (s-1vcpu-2gb)         | 2024-08-11 13:50:10 +0000   | 2024-08-11 13:58:45 +0000   | $0.02          |
+
+... (Include additional rows as needed)
+
+## Notes
+
+- The billing information is updated daily, and the costs mentioned are based on the current usage.
+- This repository is primarily for tracking and managing the cloud infrastructure costs associated with the project.
+
+## How to Use
+
+To update the billing information:
+
+1. **Download CSV:** Export the latest billing data from your DigitalOcean dashboard.
+2. **Update README:** Update this README file with the new costs and any additional details if necessary.
+
+## License
+
+This project is licensed under the MIT License.
+
+---
+
+This README file provides a clear overview of your DigitalOcean costs and allows anyone reviewing the repository to understand the billing information without needing to access the DigitalOcean dashboard directly. You can modify it further as per your needs.
