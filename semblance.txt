@@ -1,0 +1,41 @@
+Sure! Here's a GitHub-friendly summary with emojis:
+
+---
+
+### **Summary of What We Tried:**
+
+1. **👋 Initial Connection**: We started by connecting via screen share and discussed the setup of Kibana using Terraform.
+
+2. **🛠️ Terraform Init**: Attempted to initialize Terraform. It failed initially due to missing configurations and provider settings.
+
+3. **🔑 SSH Key Generation**: Generated SSH keys to securely connect to DigitalOcean. The keys were added both locally and to the DigitalOcean account.
+
+4. **🌐 SSH Key Issue**: Encountered an issue with SSH key formatting in Terraform, which was resolved by correctly formatting the fingerprint and adding it to DigitalOcean.
+
+5. **🗺️ Terraform Plan**: Ran `terraform plan` to check the setup. The plan ran successfully, but we encountered an issue with the load balancer configuration.
+
+6. **❌ Load Balancer Error**: The load balancer failed due to missing VPC UID, which was fixed by updating the configuration.
+
+7. **✅ Final Application**: After several iterations, we successfully applied the Terraform configuration, creating the Kibana setup.
+
+8. **🌐 Kibana URL**: Finally, we obtained the Kibana URL, marking the successful completion of the POC (Proof of Concept).
+
+---
+
+### **First Principles Approach:**
+
+- **🔍 Breaking Down Problems**: Each issue was broken down into fundamental components, like SSH keys, Terraform configurations, and provider settings, rather than trying to solve everything at once.
+
+- **📜 Incremental Steps**: Followed an incremental approach, resolving one problem at a time, which is key to first principles thinking.
+
+- **💡 Using GPT for Assistance**: Used GPT to understand root causes and find potential solutions, reinforcing our understanding of each component.
+
+---
+
+### **⏱️ Time Taken to Implement First Principles:**
+
+- **Approximate Time**: It took us **3 hours** to fully implement the first principles approach, solve the issues, and successfully set up the Kibana instance.
+
+---
+
+This summary should work well on GitHub, keeping the content clear, concise, and formatted for easy reading! 😊
